@@ -15,20 +15,41 @@ class Solution {
     }
 
     private int partition(int[] arr, int low, int high) {
-        int pivotElement=arr[high];
+        int mid=low+(high-low)/2;
+        int pivotElement=arr[mid];
+        int lastIndex=-1;
+        // System.out.println("The mid is :"+mid+":  "+arr[mid]);
+        
         int j=low-1;
         
-        for(int i=low;i<high;i++){
-            if(arr[i]<=arr[high]){
+        for(int i=low;i<=high;i++){
+            
+            if(i==mid){
+                continue;
+            }
+            
+            if(arr[i]<=arr[mid]){
+                if(j+1==mid){
+                    j++;
+                }
                 j++;
                 int temp=arr[j];
                 arr[j]=arr[i];
                 arr[i]=temp;
+                lastIndex=i;
             }
         }
         
-        arr[high]=arr[j+1];
+        if(j>mid){
+            arr[mid]=arr[j];
+            arr[j]=pivotElement;
+            
+            return j;
+        }
+        
+        arr[mid]=arr[j+1];
         arr[j+1]=pivotElement;
+        
         
         
         return j+1;
