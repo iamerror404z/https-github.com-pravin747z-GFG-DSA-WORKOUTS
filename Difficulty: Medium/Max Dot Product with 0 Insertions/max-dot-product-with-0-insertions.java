@@ -26,8 +26,6 @@ class Solution {
         }
         
         
-        // System.out.println("number is "+a[index1]+"     "+"included is :"
-        // +included+" excluded is : "+excluded+"    currProduct is : "+currProduct);
         
         
         int res=Math.max(included,excluded);
